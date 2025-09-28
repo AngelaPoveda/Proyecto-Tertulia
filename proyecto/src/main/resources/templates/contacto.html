@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Contacto | Tertulia Cafetería</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="icon" th:href="@{/img/logo.jpg}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top" style="background-color: var(--color-marron);">
+            <div class="container">
+                <!-- LOGO -->
+                <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
+                <!-- BOTÓN RESPONSIVE -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- MENÚ -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " th:href="@{/carta}" id="menuDropdown" role="button">
+                                Menú </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/somos}">Quiénes somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/carrito}">
+                                <i class="bi bi-cart fs-5"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container my-5">
+            <!-- Mensaje de éxito -->
+            <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <span th:text="${mensajeExito}">¡Gracias por contactarnos!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            <!-- Formulario y datos -->
+            <div class="row g-4 mb-5">
+                <div class="col-md-6 d-flex">
+                    <div class="text-white p-4 rounded text-center w-70 d-flex flex-column justify-content-center"
+                        style="background-color: var(--color-marron); height: 100%;">
+                        <h4 class="fw-bold">¿Quieres ser el primero en saber de nuestros descuentos?</h4>
+                        <p>Suscríbete y recibe un 10% de descuento en tu primera compra.</p>
+                        <p><i class="bi bi-geo-alt-fill"></i> Jr. Sibelius 984 Urb. Primavera</p>
+                        <p><i class="bi bi-geo-alt-fill"></i> Ca. Santa Rosa Mz L Lote 1 Urb. La Merced 3 Etapa</p>
+                        <p><i class="bi bi-envelope-fill"></i> tertulia_cafeteria2010@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="mb-4">Formulario de Contacto</h2>
+
+                    <form th:action="@{/contacto/enviar}" method="post" class="needs-validation" novalidate>
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            <div class="invalid-feedback">Por favor, ingrese su nombre.</div>
+                        </div>
+
+                        <!-- Apellido -->
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                            <div class="invalid-feedback">Por favor, ingrese su apellido.</div>
+                        </div>
+
+                        <!-- Correo -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="invalid-feedback">Ingrese un correo válido.</div>
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" pattern="[0-9]{9,}" required>
+                            <div class="invalid-feedback">Ingrese un número de teléfono válido (mínimo 9 dígitos).</div>
+                        </div>
+
+                        <!-- Mensaje -->
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                            <div class="invalid-feedback">Por favor, ingrese un mensaje.</div>
+                        </div>
+
+                        <!-- Botón -->
+                        <button class="btn w-100" type="submit" style="background-color: var(--color-marron); color: white">
+                            Enviar
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- Horarios de atención -->
+            <div class="container my-5">
+                <h3 class="fw-bold text-center mb-4">⏰ Horarios de Atención</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle text-center shadow">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Día</th>
+                                <th>Horario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lunes - Viernes</td>
+                                <td>9:00 AM - 8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sábado</td>
+                                <td>10:00 AM - 6:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Domingo</td>
+                                <td>Cerrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- Testimonios -->
+            <div class="mb-5">
+                <h3 class="text-center mb-4">💬 Testimonios de Clientes</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <p class="card-text">“Los pasteles son una delicia, frescos y con un sabor increíble.
+                                    Siempre compro aquí.”</p>
+                                <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - María G.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <p class="card-text">“El servicio es excelente, atienden rápido y hasta personalizan las
+                                    tortas.”</p>
+                                <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - Juan P.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <p class="card-text">“La mejor pastelería de la ciudad. Los recomiendo al 100%.”</p>
+                                <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - Carla R.</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-lg-start mt-5">
+        <div class="container footer-alto">
+            <div class="row gy-4">
+                <!-- Información de la cafetería -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase text-white fw-bold mb-3 text-center">Tertulia Cafetería</h5>
+                    <p class="text-center">
+                        Un espacio acogedor en Trujillo donde el café y la repostería artesanal
+                        se combinan para crear momentos únicos.
+                    </p>
+                </div>
+
+                <!-- Enlaces útiles -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-uppercase text-white fw-bold mb-3 text-center">Enlaces</h5>
+                    <ul class="list-unstyled text-center">
+                        <li class="mb-2"><a th:href="@{/#carta}" class="text-decoration-none">Nuestra Carta</a></li>
+                        <li class="mb-2"><a th:href="@{/#promociones}" class="text-decoration-none">Promociones</a></li>
+                        <li class="mb-2"><a th:href="@{/carrito}" class="text-decoration-none">Pedidos Online</a></li>
+                        <li class="mb-2"><a th:href="@{/contacto}" class="text-decoration-none">Contáctanos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <h5 class="text-uppercase text-white fw-bold mb-3 text-center">Contacto</h5>
+                    <p class="text-center"><i class="bi bi-geo-alt-fill me-2"></i> Jr. Sibelius 984 Urb. Primavera</p>
+                    <p class="text-center"><i class="bi bi-geo-alt-fill me-2"></i> Ca. Santa Rosa Mz L Lote 1 Urb. La
+                        Merced 3 Etapa</p>
+                    <p class="text-center"><i class="bi bi-envelope-fill me-2"></i> tertulia_cafeteria2010@gmail.com</p>
+                    <p class="text-center"><i class="bi bi-phone-fill me-2"></i> +51 988 440 290</p>
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="col-lg-3 col-md-6 text-center text-lg-start">
+                    <h5 class="text-uppercase text-white fw-bold mb-3 text-center">Síguenos</h5>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <a href="https://www.facebook.com/tertuliaempanadasymas/?locale=es_LA"
+                            class="text-white fs-4" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/tertulia_cafeteria/?hl=es" class="text-white fs-4" target="_blank"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@tertulia_cafeteria" class="text-white fs-4" target="_blank"><i
+                                class="bi bi-tiktok"></i></a>
+                        <a href="https://api.whatsapp.com/send/?phone=%2B51988440290&text&type=phone_number&app_absent=0"
+                            class="text-white fs-4" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Derechos -->
+        <div class="text-center p-3 derechos text-white">
+            © 2025 Tertulia Cafetería - Todos los derechos reservados
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+        <script th:src="@{/js/contacto.js}"></script>
+</body>
+
+</html>
