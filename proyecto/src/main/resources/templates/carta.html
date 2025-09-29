@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${titulo}">Carta | Tertulia Cafetería</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <link rel="icon" href="img/logo.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" th:href="@{/img/logo.jpg}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 
 </head>
+
 <body>
     <header>
         <!-- NAVBAR -->
@@ -50,108 +52,449 @@
                 </div>
             </div>
         </nav>
-    </header>  
-      <section id="quienes-somos" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-4 fs-"style="font-size: 4rem;">Los mejores postres para tí</h2>
-    <p class="text-center mb-5">En Tertulia Cafetería creemos que un buen café y un delicioso postre son la excusa perfecta para compartir momentos únicos.</p>
-    <div class="container py-4">
-    <!-- bebidas -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="section-title fs-2 mb-0 ">Bebidas Calientes</h2>
-      <button id="showMoreBtn" class="btn btn-outline-secondary rounded-circle" style="height: 48px; width: 48px;">
-        <i class=" bi bi-arrow-down "></i>
-      </button>
-    </div>
-    <div class="row g-5 align-items-center">
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/1200x/11/ef/d7/11efd75b7b3bb8fbfbbae1e582473691.jpg" class="card-img-top" alt="Coliflor salteada con pollo">
-          <div class="card-body">
-            <h5 class="card-title">Cafe Negro</h5>
-            <p class="card-text">Caliente | Amargo | Energizante | Puro</p>
-          </div>
+    </header>
+    <section id="quienes-somos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-size: 4rem;">Los mejores postres para ti</h2>
+            <p class="text-center mb-5">En Tertulia Cafetería creemos que un buen café y un delicioso postre son la
+                excusa perfecta para compartir momentos únicos.</p>
+
+            <!-- SECCIÓN DESAYUNOS -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="section-title fs-2 mb-0">Desayunos</h2>
+                <button class="btn btn-outline-secondary rounded-circle show-more-btn"
+                    style="height: 48px; width: 48px;" data-target="desayunos">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+
+            <div class="row g-3 g-md-4 g-lg-5">
+                <!-- Productos principales -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/f0/ce/c6/f0cec64684ccd0eb51dbc7f3b20ffb00.jpg"
+                            class="card-img-top" alt="Desayuno Tertulia">
+                        <div class="card-body">
+                            <h5 class="card-title">Tertulia Especial</h5>
+                            <p class="card-text">Completo | Nutritivo | Energizante | Fresco</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/2a/bf/94/2abf94daf4a6f8116b7764d24a34edf6.jpg"
+                            class="card-img-top" alt="Desayuno saludable">
+                        <div class="card-body">
+                            <h5 class="card-title">Desayuno Saludable</h5>
+                            <p class="card-text">Natural | Equilibrado | Delicioso</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/49/22/e3/4922e3c3d07abe86354e5c46fc0b093d.jpg"
+                            class="card-img-top" alt="Desayuno continental">
+                        <div class="card-body">
+                            <h5 class="card-title">Continental</h5>
+                            <p class="card-text">Clásico | Variado | Abundante</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos extra -->
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="desayunos">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/da/6e/18/da6e183676e4c5d65bea3ef3ec6d8686.jpg"
+                            class="card-img-top" alt="Jugo de naranja">
+                        <div class="card-body">
+                            <h5 class="card-title">Jugo de naranja</h5>
+                            <p class="card-text">Jugo de naranja, café o infusión, huevos revueltos con jamón</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN EMPANADAS -->
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                <h2 class="section-title fs-2 mb-0">Empanadas</h2>
+                <button class="btn btn-outline-secondary rounded-circle show-more-btn"
+                    style="height: 48px; width: 48px;" data-target="empanadas">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+
+            <div class="row g-3 g-md-4 g-lg-5">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/be/c7/99/bec799800477d8c391868e155b18b2c0.jpg"
+                            class="card-img-top" alt="Ají de Gallina">
+                        <div class="card-body">
+                            <h5 class="card-title">Ají de Gallina</h5>
+                            <p class="card-text">Pollo deshilachado, en salsa de escabeche de la casa.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/4c/13/a6/4c13a6a7c3aaf1c3622f6e51442e1640.jpg"
+                            class="card-img-top" alt="Lomo Saltado">
+                        <div class="card-body">
+                            <h5 class="card-title">Lomo Saltado</h5>
+                            <p class="card-text">Carne de res salteada, con cebolla a la juliana</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/4c/2a/6e/4c2a6ef4dc017ca951e8fb3f1872cb90.jpg"
+                            class="card-img-top" alt="La Toscana">
+                        <div class="card-body">
+                            <h5 class="card-title">La Toscana</h5>
+                            <p class="card-text">Pollo, tocino, champiñones, albahaca</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos extra -->
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="empanadas">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/a1/66/db/a166db2e22be372b0527a7fe36c05a13.jpg"
+                            class="card-img-top" alt="Jamón y Queso">
+                        <div class="card-body">
+                            <h5 class="card-title">Jamón y Queso</h5>
+                            <p class="card-text">Jamón Pizza, queso tipo suizo y cebolla.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="empanadas">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/86/0c/f9/860cf9c3e9faa44b3f89f1920d1b5fb9.jpg"
+                            class="card-img-top" alt="Boloñesa">
+                        <div class="card-body">
+                            <h5 class="card-title">Boloñesa</h5>
+                            <p class="card-text">Carne de res molida especial con salsa roja de la casa.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="empanadas">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/e3/95/b3/e395b37cf140e61968e064c162503b38.jpg"
+                            class="card-img-top" alt="Rollito Pizzero">
+                        <div class="card-body">
+                            <h5 class="card-title">Rollito Pizzero</h5>
+                            <p class="card-text">Perfecta combinación de jamón, queso, tocino</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN SANDWICH -->
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                <h2 class="section-title fs-2 mb-0">Sándwich</h2>
+                <button class="btn btn-outline-secondary rounded-circle show-more-btn"
+                    style="height: 48px; width: 48px;" data-target="sandwich">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+
+            <div class="row g-3 g-md-4 g-lg-5">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/73/3a/0f/733a0f036124121a091b98fe5456774f.jpg"
+                            class="card-img-top" alt="Atún Paltoso">
+                        <div class="card-body">
+                            <h5 class="card-title">Atún Paltoso</h5>
+                            <p class="card-text">Espectacular mezcla de atún, en salsa especial de la casa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/e5/8d/9f/e58d9f2e2173d50110186ef04bdf79ec.jpg"
+                            class="card-img-top" alt="Pollo Extremo">
+                        <div class="card-body">
+                            <h5 class="card-title">Pollo Extremo</h5>
+                            <p class="card-text">Al horno con tocino, mayonesa, huevo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/38/9e/3b/389e3b16bc8bd50c012f7b03cb2dd721.jpg"
+                            class="card-img-top" alt="Pavo">
+                        <div class="card-body">
+                            <h5 class="card-title">Pavo</h5>
+                            <p class="card-text">Al horno desmechado en pan francés</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos extra -->
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="sandwich">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/2b/0f/1e/2b0f1ee82d31d9d072ca201655bd2649.jpg"
+                            class="card-img-top" alt="Asado de Res">
+                        <div class="card-body">
+                            <h5 class="card-title">Asado de Res</h5>
+                            <p class="card-text">Sabrosa carne de res en salsa de la casa en pan francés.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="sandwich">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/0a/b6/78/0ab678bcdbfb626dba19b9af83fb5cfa.jpg"
+                            class="card-img-top" alt="Chicharrón de Cerdo">
+                        <div class="card-body">
+                            <h5 class="card-title">Chicharrón de Cerdo</h5>
+                            <p class="card-text">Panceta sin hueso con camote frito y sarza criolla en pan francés</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="sandwich">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/8b/94/8e/8b948e65f2f594f7edbfc46425379302.jpg"
+                            class="card-img-top" alt="Croissant de Pollo">
+                        <div class="card-body">
+                            <h5 class="card-title">Croissant de Pollo</h5>
+                            <p class="card-text">Grated de pollo, mayonesa, lechuga, apio y pecanas picadas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN AL PLATO -->
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                <h2 class="section-title fs-2 mb-0">Al Plato</h2>
+                <button class="btn btn-outline-secondary rounded-circle show-more-btn"
+                    style="height: 48px; width: 48px;" data-target="plato">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+
+            <div class="row g-3 g-md-4 g-lg-5">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/85/cd/a9/85cda9f9e7577c2f34284afde9c3cf0f.jpg"
+                            class="card-img-top" alt="Salchipapa">
+                        <div class="card-body">
+                            <h5 class="card-title">Salchipapa</h5>
+                            <p class="card-text">Papas fritas con hot dog, salchicha frankfuter y huevo frito</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/6d/77/67/6d77671a679820e6247739ad49c8b7ff.jpg"
+                            class="card-img-top" alt="Papa Rellena">
+                        <div class="card-body">
+                            <h5 class="card-title">Papa Rellena</h5>
+                            <p class="card-text">Masa de papa rellena con carne molida, pasas, aceituna y huevo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/f8/ed/48/f8ed4805a9286c32a44db2eaa886c664.jpg"
+                            class="card-img-top" alt="Tamal de Pollo">
+                        <div class="card-body">
+                            <h5 class="card-title">Tamal de Pollo</h5>
+                            <p class="card-text">Con huevo y aceituna.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos extra -->
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="plato">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/d8/47/d9/d847d9f1256e046ce780c012648caf10.jpg"
+                            class="card-img-top" alt="Humita Salada">
+                        <div class="card-body">
+                            <h5 class="card-title">Humita Salada</h5>
+                            <p class="card-text">Choclo tierno con trocito de queso.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="plato">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/e3/f6/b3/e3f6b314182b872356b87fd7692952d6.jpg"
+                            class="card-img-top" alt="Tequeños">
+                        <div class="card-body">
+                            <h5 class="card-title">Tequeños (10 und)</h5>
+                            <p class="card-text">De jamón y queso.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="plato">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/01/0c/b0/010cb090073f035fa373185818c839f4.jpg"
+                            class="card-img-top" alt="Club Sándwich">
+                        <div class="card-body">
+                            <h5 class="card-title">Club Sándwich</h5>
+                            <p class="card-text">Filete de pollo, jamón, huevo, tocino, queso, lechuga y tomate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN PASTELES Y POSTRES -->
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                <h2 class="section-title fs-2 mb-0">Pasteles y Postres</h2>
+                <button class="btn btn-outline-secondary rounded-circle show-more-btn"
+                    style="height: 48px; width: 48px;" data-target="postres">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+
+            <div class="row g-3 g-md-4 g-lg-5">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/40/bd/3b/40bd3b066c0d5f236422cab06fda44bb.jpg"
+                            class="card-img-top" alt="Cheesecake">
+                        <div class="card-body">
+                            <h5 class="card-title">Cheesecake</h5>
+                            <p class="card-text">Fresa, Arándanos, Brownie</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/cd/f1/c3/cdf1c3ab26afe9d22a57bf8782331b67.jpg"
+                            class="card-img-top" alt="Pie de Maracuyá">
+                        <div class="card-body">
+                            <h5 class="card-title">Pie de Maracuyá</h5>
+                            <p class="card-text">Delicioso y refrescante postre</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/91/8f/4b/918f4b540cbbf2e4f8ee500e2767c901.jpg"
+                            class="card-img-top" alt="Pie de Fresa">
+                        <div class="card-body">
+                            <h5 class="card-title">Pie de Fresa</h5>
+                            <p class="card-text">Dulce y cremoso</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos extra -->
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="postres">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/ab/4d/99/ab4d9931cc137a5d42fb015b92364b60.jpg"
+                            class="card-img-top" alt="Enrollado de Chocolate">
+                        <div class="card-body">
+                            <h5 class="card-title">Enrollado de Chocolate</h5>
+                            <p class="card-text">Intenso sabor a chocolate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="postres">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/78/30/ea/7830eaf321d33b0610736bbb42e98a4d.jpg"
+                            class="card-img-top" alt="Torta Tres Leches">
+                        <div class="card-body">
+                            <h5 class="card-title">Torta Tres Leches</h5>
+                            <p class="card-text">Clásico postre peruano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="postres">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/50/bd/5d/50bd5d019627aa0794abbc1c63c1c9d6.jpg"
+                            class="card-img-top" alt="Pionono">
+                        <div class="card-body">
+                            <h5 class="card-title">Pionono</h5>
+                            <p class="card-text">Dulce tradicional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="postres">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/75/34/77/75347796e13ad6e8edfaf4037f026011.jpg"
+                            class="card-img-top" alt="Mazamorra Morada">
+                        <div class="card-body">
+                            <h5 class="card-title">Mazamorra Morada</h5>
+                            <p class="card-text">Postre tradicional peruano</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="postres">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/43/16/d1/4316d1c05ea77fa26c40f945b63c5089.jpg"
+                            class="card-img-top" alt="Marquesas">
+                        <div class="card-body">
+                            <h5 class="card-title">Marquesas</h5>
+                            <p class="card-text">Oreo, Maracuyá, Fresa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN BEBIDAS CALIENTES -->
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
+                <h2 class="section-title fs-2 mb-0">Bebidas Calientes</h2>
+                <button class="btn btn-outline-secondary rounded-circle show-more-btn"
+                    style="height: 48px; width: 48px;" data-target="caliente">
+                    <i class="bi bi-arrow-down"></i>
+                </button>
+            </div>
+
+            <div class="row g-3 g-md-4 g-lg-5">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/c9/8d/04/c98d046bf1085bc59f77893bf9779244.jpg"
+                            class="card-img-top" alt="Mokaccino">
+                        <div class="card-body">
+                            <h5 class="card-title">Mokaccino</h5>
+                            <p class="card-text">Café con chocolate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/44/9c/b3/449cb3d6263fa57a375ae673aeb94c5d.jpg"
+                            class="card-img-top" alt="Espresso Doble">
+                        <div class="card-body">
+                            <h5 class="card-title">Espresso Doble</h5>
+                            <p class="card-text">Café concentrado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/1200x/ec/5f/b0/ec5fb0f4d5f9942648c244e26b9f9bf8.jpg"
+                            class="card-img-top" alt="Infusiones">
+                        <div class="card-body">
+                            <h5 class="card-title">Infusiones filtrantes</h5>
+                            <p class="card-text">Variedad de sabores</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Productos extra -->
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="caliente">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/4c/05/67/4c0567f8e6de6831dc62d89ba7b4e79c.jpg"
+                            class="card-img-top" alt="Café bombón">
+                        <div class="card-body">
+                            <h5 class="card-title">Café bombón</h5>
+                            <p class="card-text">Café con leche condensada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="caliente">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://i.pinimg.com/736x/0b/50/a8/0b50a8f4fef244389654f520e7488c06.jpg"
+                            class="card-img-top" alt="Chocolate solo">
+                        <div class="card-body">
+                            <h5 class="card-title">Chocolate solo</h5>
+                            <p class="card-text">Chocolate caliente tradicional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/1200x/3b/cf/56/3bcf56e95ed086bccc21288baad8befe.jpg" class="card-img-top" alt="Chuleta empanizada">
-          <div class="card-body">
-            <h5 class="card-title">Té de Limón</h5>
-            <p class="card-text">Refrescante | Cítrico | Ligero</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/1200x/67/5f/6f/675f6f9a3f6572495448923f7ab01ec0.jpg" class="card-img-top" alt="Guiso de frejoles">
-          <div class="card-body">
-            <h5 class="card-title">Capuchino</h5>
-            <p class="card-text">Cremoso | Suave | Aromático</p>
-          </div>
-        </div>
-      </div>
-      <!-- Productos extra ocultos inicialmente -->
-      <div class="col-md-4 d-none extra-product">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/1200x/11/ef/d7/11efd75b7b3bb8fbfbbae1e582473691.jpg" class="card-img-top" alt="Coliflor salteada con pollo">
-          <div class="card-body">
-            <h5 class="card-title">Cafe Negro</h5>
-            <p class="card-text">Caliente | Amargo | Energizante | Puro</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 d-none extra-product">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/1200x/67/5f/6f/675f6f9a3f6572495448923f7ab01ec0.jpg" class="card-img-top" alt="Guiso de frejoles">
-          <div class="card-body">
-            <h5 class="card-title">Capuchino</h5>
-            <p class="card-text">Cremoso | Suave | Aromático</p>
-          </div>
-        </div>
-      </div>
-      <!-- Flecha para mostrar más -->
-      
-    </div>
-    <!-- postres -->
-    <h2 class="section-title mb-4 my-5">Postres</h2>
-    <div class="row g-5">
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/736x/f8/46/c6/f846c6d4ad6c76eaae8e7e4486a49291.jpg" class="card-img-top" alt="Ensalada 1">
-          <div class="card-body">
-            <h5 class="card-title">Waffles Mixto</h5>
-            <p class="card-text">Dulces | Frescos | Deliciosos</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/736x/ec/29/79/ec2979c27ef30301c6dc1787bcd761eb.jpg" class="card-img-top" alt="Ensalada 2">
-          <div class="card-body">
-            <h5 class="card-title">Croissant</h5>
-            <p class="card-text">Crujiente | Dorado | Suave</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <img src="https://i.pinimg.com/1200x/03/62/56/036256a75f7eb5cdd3bbd82297c23eb1.jpg" class="card-img-top" alt="Ensalada 3">
-          <div class="card-body">
-            <h5 class="card-title">Pie de Manzana</h5>
-            <p class="card-text">Dulce | Cálido | Casero</p>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    
-    
-  </div>
-  
-    
-  </div>
-</section>
+    </section>
 
 
     <footer class="text-center text-lg-start mt-5">
@@ -170,8 +513,8 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="text-uppercase text-white fw-bold mb-3 text-center">Enlaces</h5>
                     <ul class="list-unstyled text-center">
-                        <li class="mb-2"><a th:href="@{/#carta}" class="text-decoration-none">Nuestra Carta</a></li>
-                        <li class="mb-2"><a th:href="@{/#promociones}" class="text-decoration-none">Promociones</a></li>
+                        <li class="mb-2"><a href="#carta" class="text-decoration-none">Nuestra Carta</a></li>
+                        <li class="mb-2"><a href="#promociones" class="text-decoration-none">Promociones</a></li>
                         <li class="mb-2"><a th:href="@{/carrito}" class="text-decoration-none">Pedidos Online</a></li>
                         <li class="mb-2"><a th:href="@{/contacto}" class="text-decoration-none">Contáctanos</a></li>
                     </ul>
@@ -211,19 +554,10 @@
     </footer>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-<script>
-  // Mostrar productos extra al hacer clic en la flecha
-  document.getElementById('showMoreBtn').addEventListener('click', function() {
-    document.querySelectorAll('.extra-product').forEach(function(el) {
-      el.classList.toggle('d-none');
-    });
-    // Opcional: cambiar la flecha de dirección
-    this.querySelector('i').classList.toggle('bi-arrow-right');
-    this.querySelector('i').classList.toggle('bi-arrow-left');
-  });
-</script>
+    <script th:src="@{/js/script.js}"></script>
 </body>
+
 </html>
