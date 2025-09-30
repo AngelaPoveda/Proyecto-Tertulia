@@ -391,3 +391,13 @@ footer h5 {
   transform: translateX(-20px); /* Se mueve 20px a la izquierda */
 }
 
+.btn-marron {
+    background-color: var(--color-marron);
+    color: #fff;
+    border: none;
+    transition: background 0.3s;
+}
+.btn-marron:hover {
+    background-color: var(--color-oscuro);
+    color: #fff;
+}
