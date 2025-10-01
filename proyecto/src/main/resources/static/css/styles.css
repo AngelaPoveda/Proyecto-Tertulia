@@ -23,6 +23,9 @@ body{
     padding-top: 77px;
     font-family: "Montserrat", arial;
 }
+header .carousel {
+    margin-top: -77px; /* compensa el padding */
+}
 
 /* ====== NAVEGADOR ====== */
 .navbar-nav .nav-link {
@@ -92,7 +95,14 @@ body{
     object-fit: cover;
     filter: brightness(60%);
 }
-
+@media (max-width: 576px) {
+  .carousel-caption h1 {
+    font-size: 2rem !important;
+  }
+  .carousel-caption p {
+    font-size: 1rem !important;
+  }
+}
 /* ====== SECCIONES ====== */
 .span-marron {
     background-color: var(--color-marron) !important;
@@ -154,23 +164,7 @@ footer i:hover {
 footer h5 {
     text-align: center;
 }
-::-webkit-scrollbar {
-  width: 1.3rem;
-}
 
-::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  background: #797979;
-  transition: all 0.5s ease-in-out;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #222224;
-}
-
-::-webkit-scrollbar-track {
-  background: #f9f9f9;
-}
 .text-center {
   text-align: center;
 }
@@ -182,11 +176,11 @@ footer h5 {
 }
 
 #tranding {
-  padding: 4rem 0;
+  padding: 1.5rem 0;
 }
 @media (max-width:1440px) {
   #tranding {
-    padding: 7rem 0;
+    padding: 2rem 0;
   }
 }
 
@@ -401,3 +395,44 @@ footer h5 {
     background-color: var(--color-oscuro);
     color: #fff;
 }
+@media (max-width: 576px) {
+  .section-heading {
+    font-size: 1.5rem !important;
+  }
+  .section-subheading {
+    font-size: 1rem !important;
+  }
+  .food-name,
+  .food-price,
+  .food-rating span {
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 576px) {
+  #tranding .tranding-slider {
+    height: 30rem;       /* ajusta la altura si hace falta */
+    padding: 0.5rem 0;   /* 🔹 reduce el espacio arriba/abajo */
+  }
+
+  .tranding-slide {
+    width: 22rem !important;
+    height: 26rem !important;
+    
+  }
+  .tranding-slide .tranding-slide-img img {
+    width: 22rem !important;
+    height: 26rem !important;
+  }
+
+  .tranding-slider-control .swiper-pagination {
+    bottom: -0.5rem; /* aún más pegado a la imagen */
+  }
+    #tranding .tranding-slider {
+    padding-bottom: 2rem; /* deja aire para que no los corte la sección siguiente */
+  }
+  .tranding-slider-control {
+    bottom: 1rem; /* manténlos dentro del slider */
+  }
+}
+
+
