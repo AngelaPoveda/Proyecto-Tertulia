@@ -331,19 +331,70 @@ footer h5 {
 }
 
 .card-img-top {
-    height: 500px;      /* Más alto para que se vean largas */
-    width: 100%;
-    object-fit: cover;
-    border-top-left-radius: 0.375rem;
-    border-top-right-radius: 0.375rem;
-    transition: transform 0.4s ease;
+  height: 500px;      /* Más alto para que se vean largas */
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  transition: transform 0.4s ease;
+  flex: 0 0 auto; /* prevent image from shrinking/growing inside flex card */
 }
 
 
 /*ANIMACIONES DE IMAGENES EN SOMOS*/
 /* Oculta cualquier parte que se salga de la tarjeta */
 .card {
+  /* make the whole card a column flex container so body can stretch
+     and push the button to a consistent bottom baseline */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
+}
+
+/* Ensure columns inside rows stretch so cards inside them have equal heights */
+.row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+.row > [class*="col-"] .card {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Enforce stretching on rows/columns in case Bootstrap rules conflict */
+.row {
+  align-items: stretch !important;
+}
+
+/* Stronger selector to ensure the button wrapper is pushed to the bottom */
+.card .card-body > .d-flex.justify-content-center.mt-3 {
+  margin-top: auto !important;
+  align-self: stretch !important;
+}
+.card .card-body > .d-flex.justify-content-center.mt-3 .comprar-btn {
+  align-self: center !important;
+}
+
+/* Make card body a column so we can push the buy button to the bottom */
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  /* ensure it can grow to fill the card height */
+  flex: 1 1 auto;
+}
+
+/* The immediate wrapper around the button (usually .d-flex) will sit at the bottom */
+.card .card-body > .d-flex {
+  margin-top: auto;
+}
+
+/* Fallback: if the button is not wrapped in a direct .d-flex child, ensure the button itself
+   sits at the bottom and is centered */
+.card .card-body .comprar-btn {
+  margin-top: auto;
+  align-self: center; /* centers inside the flex column */
 }
 
 /* transición suave para las imágenes */
@@ -393,6 +444,37 @@ footer h5 {
 .btn-marron:hover {
     background-color: var(--color-oscuro);
     color: #fff;
+}
+/* Botón Comprar personalizado */
+.comprar-btn {
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: 999px; /* píldora */
+  box-shadow: 0 6px 18px rgba(33, 30, 24, 0.12);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.comprar-btn:focus {
+  outline: 3px solid rgba(107,79,40,0.12);
+  outline-offset: 2px;
+}
+.comprar-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(33, 30, 24, 0.18);
+}
+
+/* Icon inside button (if added later) */
+.comprar-btn i {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 576px) {
+  .comprar-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  }
 }
 @media (max-width: 576px) {
   .section-heading {
