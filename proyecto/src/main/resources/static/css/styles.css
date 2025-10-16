@@ -107,7 +107,7 @@ header .carousel {
 .span-marron {
     background-color: var(--color-marron) !important;
     color: #fff !important;
-}
+  }
 .precio-marron {
     color: var(--color-oscuro) !important;
     font-weight: bold;
@@ -233,7 +233,7 @@ footer h5 {
   top: 2rem;
   right: 2rem;
   color: var(--blanco);
-}
+} 
 .tranding-slide-content .tranding-slide-content-bottom {
   position: absolute;
   bottom: 2rem;
@@ -445,6 +445,16 @@ footer h5 {
     background-color: var(--color-oscuro);
     color: #fff;
 }
+.btn-marronoscuro {
+    background-color: var(--color-oscuro);
+    color: #fff;
+    border: none;
+    transition: background 0.3s;
+}
+.btn-marronoscuro:hover {
+    background-color: var(--color-marron);
+    color: #fff;
+}
 /* Botón Comprar personalizado */
 .comprar-btn {
   padding: 0.6rem 1.2rem;
@@ -515,5 +525,30 @@ footer h5 {
     bottom: 1rem; /* manténlos dentro del slider */
   }
 }
+/* --- Arreglo para botones Swiper que no responden bien --- */
+.tranding-slider-control {
+  position: relative;
+  z-index: 5; /* 🔹 asegura que esté por encima de las secciones siguientes */
+}
 
+.tranding-slider-control .slider-arrow {
+  z-index: 10; /* 🔹 el círculo y el ícono son totalmente clickeables */
+  cursor: pointer; /* 🔹 muestra el puntero de clic */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;               /* centra verticalmente en el slider */
+  transform: translateY(-50%);
+  z-index: 11;
+}
+
+.tranding-slider-control .swiper-pagination {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+}
 

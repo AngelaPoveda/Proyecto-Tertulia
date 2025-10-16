@@ -48,3 +48,19 @@ var TrandingSlider = new Swiper('.tranding-slider', {
     prevEl: '.swiper-button-prev',
   }
 });
+
+function agregarAlCarrito(producto) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  const existente = carrito.find(p => p.id === producto.id);
+
+  if (existente) {
+    existente.cantidad++;
+  } else {
+    carrito.push({ ...producto, cantidad: 1 });
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  alert("Producto agregado al carrito 🛒");
+}
+
