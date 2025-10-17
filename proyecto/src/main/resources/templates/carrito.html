@@ -59,13 +59,10 @@
                 <div class="col-lg-8">
                     <div class="card shadow-lg border-0">
                         <div class="card-body">
-                            <h1 class="card-title text-center mb-4" data-section="carrito" data-value="titulo">Tus
-                                Compras</h1>
-
+                            <h1 class="card-title text-center mb-4" data-section="carrito" data-value="titulo">Tus Compras</h1>
                             <div class="carrito-contenido text-center py-5"></div>
-
                             <div class="d-flex justify-content-end mt-4">
-                                <a href="#" class="btn btn-marron me-2">Finalizar compra</a>
+                                <button id="finalizarCompra" class="btn btn-marron me-2">Finalizar compra</button>
                                 <a th:href="@{/carta}" class="btn btn-outline-dark">Seguir comprando</a>
                             </div>
                         </div>
@@ -141,8 +138,7 @@
         crossorigin="anonymous"></script>
     <script src="js/carrito.js"></script>
     <script src="js/script.js"></script>
-    s
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
-
 </html>

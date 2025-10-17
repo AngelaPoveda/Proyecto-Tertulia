@@ -23,9 +23,6 @@ body{
     padding-top: 77px;
     font-family: "Montserrat", arial;
 }
-header .carousel {
-    margin-top: -77px; /* compensa el padding */
-}
 
 /* ====== NAVEGADOR ====== */
 .navbar-nav .nav-link {

@@ -61,6 +61,8 @@ function agregarAlCarrito(producto) {
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
-  alert("Producto agregado al carrito 🛒");
+  const toastElement = document.getElementById('toastCarrito');
+  const toast = new bootstrap.Toast(toastElement);
+  toast.show();
 }
 
