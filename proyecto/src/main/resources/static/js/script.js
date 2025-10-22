@@ -26,6 +26,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const usuario = localStorage.getItem("usuario");
+  const usuarioDropdown = document.getElementById("usuarioDropdown");
+  const loginNav = document.getElementById("loginNav");
+  const nombreUsuario = document.getElementById("nombreUsuario");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (usuario) {
+    // Mostrar nombre de usuario e ícono
+    usuarioDropdown.style.display = "block";
+    loginNav.style.display = "none";
+    nombreUsuario.textContent = usuario;
+  } else {
+    // Mostrar solo "Iniciar sesión"
+    usuarioDropdown.style.display = "none";
+    loginNav.style.display = "block";
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("usuario");
+      window.location.href = "/"; // Redirige al inicio
+    });
+  }
+});
+
 
 var TrandingSlider = new Swiper('.tranding-slider', {
   effect: 'coverflow',
@@ -65,4 +92,25 @@ function agregarAlCarrito(producto) {
   const toast = new bootstrap.Toast(toastElement);
   toast.show();
 }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const usuario = localStorage.getItem("usuario");
+    const usuarioDropdown = document.getElementById("usuarioDropdown");
+    const loginNav = document.getElementById("loginNav");
+    const nombreUsuario = document.getElementById("nombreUsuario");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (usuario) {
+      usuarioDropdown.style.display = "block";
+      loginNav.style.display = "none";
+      nombreUsuario.textContent = usuario;
+    }
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        window.location.reload();
+      });
+    }
+  });
 

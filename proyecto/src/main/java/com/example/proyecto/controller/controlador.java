@@ -39,6 +39,24 @@ public class controlador {
         return "carrito";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("titulo", "Login | Tertulia Cafetería");
+        return "login";
+    }
+
+    @GetMapping("/registro")
+    public String registro(Model model) {
+        model.addAttribute("titulo", "Registro | Tertulia Cafetería");
+        return "registro";
+    }
+
+    @GetMapping("/checkout")
+    public String checkout(Model model) {
+        model.addAttribute("titulo", "Finalizar Compra | Tertulia Cafetería");
+        return "checkout";
+    }
+    
     @PostMapping("/contacto/enviar")
     public String enviarContacto(
             @RequestParam String nombre,

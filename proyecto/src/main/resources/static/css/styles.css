@@ -549,3 +549,44 @@ footer h5 {
   z-index: 9;
 }
 
+.link-marron {
+  color: var(--color-oscuro);
+}
+
+#login-page {
+  padding-top: 0 !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-volver {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: var(--color-marron);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+  background-color: var(--color-oscuro);
+  color: var(--color-beige);
+  text-decoration: none;
+}
+
+.bg-marron {
+  background-color: var(--color-marron) !important;
+}
+
+.navbar .btn-link {
+  text-decoration: none;
+}
+
+.navbar .btn-link:hover i {
+  color: var(--color-acento);
+}

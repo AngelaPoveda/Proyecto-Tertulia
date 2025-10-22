@@ -21,20 +21,21 @@
             <div class="container">
                 <!-- LOGO -->
                 <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
+
                 <!-- BOTÓN RESPONSIVE -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <!-- MENÚ -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/}">Inicio</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " th:href="@{/carta}" id="menuDropdown" role="button">
-                                Menú </a>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/carta}">Menú</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/somos}">Quiénes somos</a>
@@ -47,7 +48,25 @@
                                 <i class="bi bi-cart fs-5"></i>
                             </a>
                         </li>
+
+                        <!-- 🔹 Simulación de usuario logueado -->
+                        <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle fs-5 me-2"></i>
+                                <span id="nombreUsuario">Usuario</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 🔹 Si no hay sesión -->
+                        <li class="nav-item ms-3" id="loginNav">
+                            <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
@@ -59,7 +78,8 @@
                 <div class="col-lg-8">
                     <div class="card shadow-lg border-0">
                         <div class="card-body">
-                            <h1 class="card-title text-center mb-4" data-section="carrito" data-value="titulo">Tus Compras</h1>
+                            <h1 class="card-title text-center mb-4" data-section="carrito" data-value="titulo">Tus
+                                Compras</h1>
                             <div class="carrito-contenido text-center py-5"></div>
                             <div class="d-flex justify-content-end mt-4">
                                 <button id="finalizarCompra" class="btn btn-marron me-2">Finalizar compra</button>
@@ -71,7 +91,6 @@
             </div>
         </div>
     </section>
-
 
 
     <footer class="text-center text-lg-start mt-5">
@@ -132,13 +151,12 @@
     </footer>
 
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script src="js/carrito.js"></script>
-    <script src="js/script.js"></script>
+    <script th:src="@{/js/carrito.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script th:src="@{/js/script.js}"></script>
 </body>
+
 </html>

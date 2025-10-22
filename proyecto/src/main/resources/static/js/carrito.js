@@ -1,15 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const contenedorCarrito = document.querySelector(".carrito-contenido");
+  const finalizarBtn = document.getElementById('finalizarCompra');
 
-  // Leer el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Función para actualizar el carrito en localStorage
+  // ---- Guarda el carrito ----
   const guardarCarrito = () => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   };
 
-  // Función para renderizar el carrito en pantalla
+  // ---- Renderiza el carrito ----
   const renderCarrito = () => {
     if (carrito.length === 0) {
       contenedorCarrito.innerHTML = `
@@ -66,132 +66,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
     contenedorCarrito.innerHTML = html;
 
-    // Agregar evento a los botones de eliminar
-    const botonesEliminar = document.querySelectorAll(".eliminar-btn");
-    botonesEliminar.forEach((btn) => {
+    // ---- Botones eliminar ----
+    document.querySelectorAll(".eliminar-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const index = e.target.closest("button").dataset.index;
         eliminarDelCarrito(index);
       });
     });
-  };
 
-  const eliminarDelCarrito = (index) => {
-    carrito.splice(index, 1); // Elimina el producto
-    guardarCarrito();         // Guarda los cambios
-    renderCarrito();          // Vuelve a mostrar la tabla
-  };
-
-  renderCarrito();
-
-
-  const btnVaciar = document.getElementById("vaciarCarrito");
-
-if (btnVaciar) {
-  btnVaciar.addEventListener("click", () => {
-    Swal.fire({
-      title: '¿Vaciar carrito?',
-      text: 'Se eliminarán todos los productos del carrito.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#6B4F28', 
-      cancelButtonColor: '#3e2723',
-      confirmButtonText: 'Sí, vaciar',
-      cancelButtonText: 'Cancelar',
-      background: '#fff',
-      color: '#4b2e00'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Eliminar del localStorage
-        localStorage.removeItem("carrito");
-
+    // ---- Botón vaciar ----
+    const btnVaciar = document.getElementById("vaciarCarrito");
+    if (btnVaciar) {
+      btnVaciar.addEventListener("click", () => {
         Swal.fire({
-          icon: 'success',
-          title: 'Carrito vacío',
-          text: 'Se han eliminado todos los productos 🛒',
-          showConfirmButton: false,
-          timer: 1500,
+          title: '¿Vaciar carrito?',
+          text: 'Se eliminarán todos los productos del carrito.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#6B4F28',
+          cancelButtonColor: '#3e2723',
+          confirmButtonText: 'Sí, vaciar',
+          cancelButtonText: 'Cancelar',
           background: '#fff',
           color: '#4b2e00'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("carrito");
+            Swal.fire({
+              icon: 'success',
+              title: 'Carrito vacío',
+              text: 'Se han eliminado todos los productos 🛒',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            setTimeout(() => location.reload(), 1500);
+          }
         });
+      });
+    }
+  };
 
-        setTimeout(() => {
-          location.reload(); 
-        }, 1500);
+  // ---- Eliminar producto ----
+  const eliminarDelCarrito = (index) => {
+    carrito.splice(index, 1);
+    guardarCarrito();
+    renderCarrito();
+  };
+
+  // Render inicial
+  renderCarrito();
+
+  // ---- Finalizar compra ----
+  if (finalizarBtn) {
+    finalizarBtn.addEventListener('click', () => {
+      const usuario = localStorage.getItem('usuario');
+
+      // ⚠️ Si el carrito está vacío
+      if (carrito.length === 0) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Carrito vacío',
+          text: 'Agrega productos antes de finalizar tu compra.',
+          confirmButtonColor: '#6B4F28'
+        });
+        return;
       }
+
+      // ⚠️ Si no hay sesión
+      if (!usuario) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Inicia sesión',
+          text: 'Debes iniciar sesión para finalizar tu compra.',
+          confirmButtonText: 'Ir a iniciar sesión',
+          confirmButtonColor: '#6B4F28'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/login';
+          }
+        });
+        return;
+      }
+
+      // ✅ Si hay sesión y carrito con productos → ir al checkout
+      window.location.href = '/checkout';
     });
-  });
-}
-
-// Finalizar compra
-const btnFinalizar = document.getElementById("finalizarCompra");
-if (btnFinalizar) {
-  btnFinalizar.addEventListener("click", () => {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-    if (carrito.length === 0) {
-      Swal.fire({
-        icon: "info",
-        title: "Carrito vacío",
-        text: "Agrega productos antes de finalizar tu compra ☕",
-        confirmButtonColor: "#6B4F28",
-        background: "#fff",
-        color: "#4b2e00"
-      });
-      return;
-    }
-
-    // Finalizar compra
-const btnFinalizar = document.getElementById("finalizarCompra");
-if (btnFinalizar) {
-  btnFinalizar.addEventListener("click", () => {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-    if (carrito.length === 0) {
-      Swal.fire({
-        icon: "info",
-        title: "Carrito vacío",
-        text: "Agrega productos antes de finalizar tu compra ☕",
-        confirmButtonColor: "#6B4F28",
-        background: "#fff",
-        color: "#4b2e00"
-      });
-      return;
-    }
-
-    // Generar mensaje con los productos
-    let mensaje = "*Pedido desde Tertulia Cafetería:*%0A%0A";
-    carrito.forEach(item => {
-      mensaje += `• ${item.nombre} x${item.cantidad} - S/${item.precio.toFixed(2)}%0A`;
-    });
-
-    let total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
-    mensaje += `%0A*Total:* S/${total.toFixed(2)}%0A%0AGracias por tu compra`;
-
-    const numero = "51988440290";
-    const url = `https://wa.me/${numero}?text=${mensaje}`;
-
-    // Mostrar alerta antes de abrir WhatsApp
-    Swal.fire({
-      icon: "success",
-      title: "¡Gracias por tu compra! ☕",
-      text: "Serás redirigido a WhatsApp para confirmar tu pedido.",
-      showConfirmButton: false,
-      timer: 1800,
-      background: "#fff",
-      color: "#4b2e00"
-    });
-
-    // Esperar 1.8 segundos y abrir WhatsApp
-    setTimeout(() => {
-      window.open(url, "_blank");
-      localStorage.removeItem("carrito");
-      location.reload();
-    }, 1800);
-  });
-}
-
-});
   }
 });
-
