@@ -590,3 +590,34 @@ footer h5 {
 .navbar .btn-link:hover i {
   color: var(--color-acento);
 }
+
+/* Modal simple y agradable */
+.simple-success-modal {
+    border-radius: 12px;
+    max-width: 420px;
+}
+
+.simple-success-modal .modal-body {
+    padding: 1.5rem;
+}
+
+.icon-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99,40,20,0.08); /* ligero tono marrón */
+    color: var(--color-marron);
+    margin-top: -36px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* botón marrón (ya usado en otras partes) */
+.btn-marron {
+    background-color: var(--color-marron);
+    color: #fff;
+    border: 0;
+}
+.btn-marron:hover { filter: brightness(0.95); transform: translateY(-1px); }
