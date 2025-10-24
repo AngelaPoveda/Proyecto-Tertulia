@@ -16,7 +16,7 @@ public class Pedido {
     private Long id;
 
     @ManyToOne
-    private usuario usuario;
+    private Usuario usuario;
 
     private LocalDateTime fecha;
     private double total;
