@@ -621,3 +621,28 @@ footer h5 {
     border: 0;
 }
 .btn-marron:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+.contacto-banner {
+    height: 60vh;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.contacto-banner img {
+    object-fit: cover;
+    filter: brightness(70%);
+    transition: transform 0.5s ease;
+}
+
+.contacto-banner .img-hover:hover {
+    transform: scale(1.05);
+}
+
+.contacto-banner .overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.contacto-banner .z-2 {
+    z-index: 2;
+}
