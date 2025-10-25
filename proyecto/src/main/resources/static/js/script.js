@@ -1,31 +1,34 @@
+// ✅ Mostrar/Ocultar productos adicionales (botones "Ver más")
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado, inicializando botones...');
-    
-    const buttons = document.querySelectorAll('.show-more-btn');
-    console.log('Botones encontrados:', buttons.length);
-    
-    buttons.forEach(function(button, index) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetCategory = this.getAttribute('data-target');
-            const extraProducts = document.querySelectorAll(`.extra-product[data-category="${targetCategory}"]`);
-            const icon = this.querySelector('i');
-            
-            // Toggle de los productos extra
-            extraProducts.forEach(function(product) {
-                product.classList.toggle('d-none');
-            });
-            
-            // Toggle del ícono
-            if (icon) {
-                icon.classList.toggle('bi-arrow-down');
-                icon.classList.toggle('bi-arrow-up');
-            }
-        });
+  console.log('DOM cargado, inicializando botones...');
+
+  const buttons = document.querySelectorAll('.show-more-btn');
+  console.log('Botones encontrados:', buttons.length);
+
+  buttons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const targetCategory = this.getAttribute('data-target');
+      const extraProducts = document.querySelectorAll(`.extra-product[data-category="${targetCategory}"]`);
+      const icon = this.querySelector('i');
+
+      // Toggle de los productos extra
+      extraProducts.forEach(function(product) {
+        product.classList.toggle('d-none');
+      });
+
+      // Toggle del ícono
+      if (icon) {
+        icon.classList.toggle('bi-arrow-down');
+        icon.classList.toggle('bi-arrow-up');
+      }
     });
+  });
 });
 
+
+// ✅ Manejo de sesión (mostrar usuario o enlace de login)
 document.addEventListener("DOMContentLoaded", () => {
   const usuario = localStorage.getItem("usuario");
   const usuarioDropdown = document.getElementById("usuarioDropdown");
@@ -54,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// ✅ Slider principal con Swiper
 var TrandingSlider = new Swiper('.tranding-slider', {
   effect: 'coverflow',
   grabCursor: true,
@@ -76,6 +80,8 @@ var TrandingSlider = new Swiper('.tranding-slider', {
   }
 });
 
+
+// ✅ Función para agregar productos al carrito
 function agregarAlCarrito(producto) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -88,29 +94,9 @@ function agregarAlCarrito(producto) {
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // Mostrar notificación (Toast de Bootstrap)
   const toastElement = document.getElementById('toastCarrito');
   const toast = new bootstrap.Toast(toastElement);
   toast.show();
 }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const usuario = localStorage.getItem("usuario");
-    const usuarioDropdown = document.getElementById("usuarioDropdown");
-    const loginNav = document.getElementById("loginNav");
-    const nombreUsuario = document.getElementById("nombreUsuario");
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    if (usuario) {
-      usuarioDropdown.style.display = "block";
-      loginNav.style.display = "none";
-      nombreUsuario.textContent = usuario;
-    }
-
-    if (logoutBtn) {
-      logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem("usuario");
-        window.location.reload();
-      });
-    }
-  });
-

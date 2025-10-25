@@ -18,59 +18,52 @@
 <body>
   <header>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top" style="background-color: var(--color-marron);">
-      <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top" style="background-color: var(--color-marron);">
+    <div class="container">
         <!-- LOGO -->
         <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
 
         <!-- BOTÓN RESPONSIVE -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- MENÚ -->
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/}">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/carta}">Menú</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/somos}">Quiénes somos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/contacto}">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/carrito}">
-                <i class="bi bi-cart fs-5"></i>
-              </a>
-            </li>
+            <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/carta}">Menú</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/somos}">Quiénes somos</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
 
-            <!-- 🔹 Simulación de usuario logueado -->
-            <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
-              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-circle fs-5 me-2"></i>
-                <span id="nombreUsuario">Usuario</span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
-              </ul>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/carrito}">
+                        <i class="bi bi-cart fs-5"></i>
+                    </a>
+                </li>
 
-            <!-- 🔹 Si no hay sesión -->
-            <li class="nav-item ms-3" id="loginNav">
-              <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
-            </li>
-          </ul>
+                <!-- 🔹 Si HAY sesión -->
+                <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-5 me-2"></i>
+                        <span id="nombreUsuario">Usuario</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                        <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+                    </ul>
+                </li>
 
+                <!-- 🔹 Si NO hay sesión -->
+                <li class="nav-item ms-3" id="loginNav">
+                    <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
+
 
 
     <div id="cafeteriaCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">

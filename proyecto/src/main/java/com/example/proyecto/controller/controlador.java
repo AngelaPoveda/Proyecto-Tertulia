@@ -33,15 +33,11 @@ public class controlador {
         return "contacto";
     }
 
- 
-
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("titulo", "Login | Tertulia Cafetería");
         return "login";
     }
-
-   
 
     @GetMapping("/checkout")
     public String checkout(Model model) {

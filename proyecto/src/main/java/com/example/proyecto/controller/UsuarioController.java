@@ -1,17 +1,13 @@
 package com.example.proyecto.controller;
-
 import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.example.proyecto.modelos.Usuario;
 import com.example.proyecto.repositorio.UsuarioRepositorio;
 import org.springframework.ui.Model;
-
 
 
 @Controller
@@ -41,7 +37,7 @@ public class UsuarioController {
     @PostMapping("/registro")
     public String registrarUsuario(@ModelAttribute Usuario usuario) {
         usuarioRepository.save(usuario);
-       return "redirect:/login?success";
+        return "redirect:/login?success";
     }
 
     // ✅ Mostrar formulario para crear un nuevo usuario

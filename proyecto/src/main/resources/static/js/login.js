@@ -8,38 +8,52 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // LOGIN
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const usuario = document.getElementById("usuario").value.trim();
-        const password = document.getElementById("password").value.trim();
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    try {
+        const response = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nombreUsuario: usuario, contrasena: password })
+        });
 
-        const userFound = usuarios.find(u => u.usuario === usuario && u.password === password);
-
-        if (userFound) {
-            localStorage.setItem("usuarioActivo", usuario);
-            Swal.fire({
-                icon: "success",
-                title: "Bienvenido ☕",
-                text: "Redirigiendo a la página principal...",
-                showConfirmButton: false,
-                timer: 1500,
-                background: "#fff",
-                color: "#4b2e00"
-            });
-            setTimeout(() => window.location.href = "index.html", 1500);
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "Usuario o contraseña incorrectos.",
-                confirmButtonColor: "#6B4F28",
-                background: "#fff",
-                color: "#4b2e00"
-            });
+        if (!response.ok) {
+            const errorMsg = await response.text();
+            throw new Error(errorMsg);
         }
-    });
+
+        const userData = await response.json();
+
+        // Guardar datos del usuario en localStorage
+        localStorage.setItem("usuarioActivo", JSON.stringify(userData));
+
+        Swal.fire({
+            icon: "success",
+            title: "Bienvenido ☕",
+            text: "Redirigiendo a la página principal...",
+            showConfirmButton: false,
+            timer: 1500,
+            background: "#fff",
+            color: "#4b2e00"
+        });
+
+        setTimeout(() => window.location.href = "/", 1500);
+
+    } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error.message || "Error al iniciar sesión.",
+            confirmButtonColor: "#6B4F28",
+            background: "#fff",
+            color: "#4b2e00"
+        });
+    }
+});
+
 
     // REGISTRO
     btnRegistro.addEventListener("click", async () => {
