@@ -25,25 +25,32 @@
                 Crea tu cuenta en <span style="color: var(--color-marron-oscuro);">Tertulia</span>
             </h2>
 
-            <form id="registroForm">
+            <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre completo</label>
-                    <input type="text" id="nombre" class="form-control" placeholder="Ejemplo: Ana Torres" required>
+                    <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ejemplo: Ana Torres"
+                        required>
                 </div>
-
                 <div class="mb-3">
                     <label for="usuario" class="form-label">Nombre de usuario</label>
-                    <input type="text" id="usuario" class="form-control" placeholder="Tu usuario" required>
+                    <input type="text" th:field="*{nombreUsuario}" class="form-control" placeholder="Tu usuario"
+                        required>
                 </div>
-
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo electrónico</label>
-                    <input type="email" id="correo" class="form-control" placeholder="tucorreo@gmail.com" required>
+                    <input type="email" th:field="*{correo}" class="form-control" placeholder="tucorreo@gmail.com"
+                        required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" id="password" class="form-control" placeholder="********" required>
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" th:field="*{contrasena}" class="form-control" placeholder="********"
+                        required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" th:field="*{telefono}" class="form-control" placeholder="999999999">
                 </div>
 
                 <button type="submit" class="btn btn-marron w-100 py-2 mt-3">Registrarme</button>
@@ -53,22 +60,11 @@
                     <a th:href="@{/login}" class="link-marron">Inicia sesión</a>
                 </p>
             </form>
+
         </div>
     </section>
 
-    <script>
-        document.getElementById("registroForm").addEventListener("submit", (e) => {
-            e.preventDefault();
-            Swal.fire({
-                icon: 'success',
-                title: 'Registro exitoso ☕',
-                text: 'Ahora puedes iniciar sesión con tus datos',
-                confirmButtonColor: '#6B4F28'
-            }).then(() => {
-                window.location.href = "/login";
-            });
-        });
-    </script>
+
 
 </body>
 

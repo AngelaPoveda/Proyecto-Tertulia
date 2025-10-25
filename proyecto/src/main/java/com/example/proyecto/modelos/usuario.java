@@ -8,13 +8,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class usuario {
+public class Usuario{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
+    private String nombreUsuario;
     private String correo;
     private String contrasena; // mejor evitar la ñ en nombres de variables
     private String telefono;

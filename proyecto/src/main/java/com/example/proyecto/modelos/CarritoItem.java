@@ -1,5 +1,5 @@
 package com.example.proyecto.modelos;
-
+import com.example.proyecto.modelos.Usuario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +14,7 @@ public class CarritoItem {
     private Long id;
 
     @ManyToOne
-    private usuario usuario;
+    private Usuario usuario;
 
     @ManyToOne
     private Producto producto;

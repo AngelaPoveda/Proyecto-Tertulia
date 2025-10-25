@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <link rel="icon" th:href="@{/img/logo.jpg}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
@@ -40,18 +43,19 @@
 
                 <p class="text-center mt-4 mb-0">
                     ¿No tienes cuenta?
-                    <a th:href="@{/registro}" class="link-marron">Regístrate aquí</a>
+                    <a th:href="@{/usuarios/registro}" class="link-marron">Regístrate aquí</a>
                 </p>
             </form>
         </div>
     </section>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", (e) => {
-            e.preventDefault();
-            const nombre = document.getElementById("usuario").value;
-            localStorage.setItem("usuario", nombre);
-            window.location.href = "/";
+  
+    <script th:if="${param.success}">
+        Swal.fire({
+            icon: 'success',
+            title: 'Registro exitoso ☕',
+            text: 'Ahora puedes iniciar sesión con tus datos',
+            confirmButtonColor: '#6B4F28'
         });
     </script>
 
