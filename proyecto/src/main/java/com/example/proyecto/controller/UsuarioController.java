@@ -31,6 +31,19 @@ public class UsuarioController {
         return "usuarios"; // usuarios.html
     }
 
+    @GetMapping("/registro")
+    public String mostrarFormularioRegistro(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("titulo", "Registro | Tertulia Cafetería");
+        return "registro"; // tu archivo registro.html
+    }
+      // ✅ Guardar usuario registrado
+    @PostMapping("/registro")
+    public String registrarUsuario(@ModelAttribute Usuario usuario) {
+        usuarioRepository.save(usuario);
+       return "redirect:/login?success";
+    }
+
     // ✅ Mostrar formulario para crear un nuevo usuario
     @GetMapping("/nuevo")
     public String mostrarFormularioNuevo(Model model) {

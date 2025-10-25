@@ -33,11 +33,7 @@ public class controlador {
         return "contacto";
     }
 
-    @GetMapping("/carrito")
-    public String carrito(Model model) {
-        model.addAttribute("titulo", "Carrito | Tertulia Cafetería");
-        return "carrito";
-    }
+ 
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -45,11 +41,7 @@ public class controlador {
         return "login";
     }
 
-    @GetMapping("/registro")
-    public String registro(Model model) {
-        model.addAttribute("titulo", "Registro | Tertulia Cafetería");
-        return "registro";
-    }
+   
 
     @GetMapping("/checkout")
     public String checkout(Model model) {

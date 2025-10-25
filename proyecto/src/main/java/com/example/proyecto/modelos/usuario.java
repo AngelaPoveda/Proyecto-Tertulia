@@ -15,6 +15,7 @@ public class Usuario{
     private Long id;
 
     private String nombre;
+    private String nombreUsuario;
     private String correo;
     private String contrasena; // mejor evitar la ñ en nombres de variables
     private String telefono;
