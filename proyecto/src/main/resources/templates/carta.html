@@ -17,60 +17,62 @@
 
 <body>
     <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top" style="background-color: var(--color-marron);">
+            <div class="container">
+                <!-- LOGO -->
+                <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
 
+                <!-- BOTÓN RESPONSIVE -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- MENÚ -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
+                        <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/carta}">Menú</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/somos}">Quiénes somos</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/carrito}">
+                                <i class="bi bi-cart fs-5"></i>
+                            </a>
+                        </li>
+
+                        <!-- 🔹 Si HAY sesión -->
+                        <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle fs-5 me-2"></i>
+                                <span id="nombreUsuario">Usuario</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 🔹 Si NO hay sesión -->
+                        <li class="nav-item ms-3" id="loginNav">
+                            <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
+
     <section id="quienes-somos" class="py-5 bg-light">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top" style="background-color: var(--color-marron);">
-    <div class="container">
-        <!-- LOGO -->
-        <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
-
-        <!-- BOTÓN RESPONSIVE -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- MENÚ -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
-                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/carta}">Menú</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/somos}">Quiénes somos</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/carrito}">
-                        <i class="bi bi-cart fs-5"></i>
-                    </a>
-                </li>
-
-                <!-- 🔹 Si HAY sesión -->
-                <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle fs-5 me-2"></i>
-                        <span id="nombreUsuario">Usuario</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                        <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-
-                <!-- 🔹 Si NO hay sesión -->
-                <li class="nav-item ms-3" id="loginNav">
-                    <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav><h2 class="text-center mb-4" style="font-size: 4rem;">Los mejores postres para ti</h2>
+            <h2 class="text-center mb-4" style="font-size: 4rem;">Los mejores postres para ti</h2>
             <p class="text-center mb-5">En Tertulia Cafetería creemos que un buen café y un delicioso postre son la
                 excusa perfecta para compartir momentos únicos.</p>
 
             <!-- SECCIÓN DESAYUNOS -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4 mt-5">
                 <h2 class="section-title fs-2 mb-0">Desayunos</h2>
                 <button class="btn btn-outline-secondary rounded-circle show-more-btn"
                     style="height: 48px; width: 48px;" data-target="desayunos">
@@ -78,19 +80,18 @@
                 </button>
             </div>
 
+            <!-- Productos principales -->
             <div class="row g-3 g-md-4 g-lg-5">
-                <!-- Productos principales -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm h-100">
-                        <img src="https://i.pinimg.com/736x/f0/ce/c6/f0cec64684ccd0eb51dbc7f3b20ffb00.jpg"
+                    <div class="card shadow-sm h-100"> <img
+                            src="https://i.pinimg.com/736x/f0/ce/c6/f0cec64684ccd0eb51dbc7f3b20ffb00.jpg"
                             class="card-img-top" alt="Desayuno Tertulia">
                         <div class="card-body">
                             <h5 class="card-title">Tertulia Especial</h5>
                             <p class="card-text">Completo | Nutritivo | Energizante | Fresco</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 13</p>
-                            <div class="d-flex justify-content-center mt-3">
-                                <button
-                                    onclick="agregarAlCarrito({id: 1, nombre: 'Desayuno Tertulia Especial', precio: 12})"
+                            <div class="d-flex justify-content-center mt-3"> <button
+                                    onclick="agregarAlCarrito({id: 1, nombre: 'Desayuno Tertulia Especial', precio: 13, categoria: 1})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -98,15 +99,15 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm h-100">
-                        <img src="https://i.pinimg.com/1200x/2a/bf/94/2abf94daf4a6f8116b7764d24a34edf6.jpg"
+                    <div class="card shadow-sm h-100"> <img
+                            src="https://i.pinimg.com/1200x/2a/bf/94/2abf94daf4a6f8116b7764d24a34edf6.jpg"
                             class="card-img-top" alt="Desayuno saludable">
                         <div class="card-body">
                             <h5 class="card-title">Desayuno Saludable</h5>
                             <p class="card-text">Natural | Equilibrado | Delicioso</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 15</p>
-                            <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 2, nombre: 'Desayuno Saludable', precio: 15})"
+                            <div class="d-flex justify-content-center mt-3"> <button
+                                    onclick="agregarAlCarrito({id: 2, nombre: 'Desayuno Saludable', precio: 15, categoria: 1})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -114,22 +115,21 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card shadow-sm h-100">
-                        <img src="https://i.pinimg.com/736x/da/6e/18/da6e183676e4c5d65bea3ef3ec6d8686.jpg"
+                    <div class="card shadow-sm h-100"> <img
+                            src="https://i.pinimg.com/736x/da/6e/18/da6e183676e4c5d65bea3ef3ec6d8686.jpg"
                             class="card-img-top" alt="Desayuno continental">
                         <div class="card-body">
                             <h5 class="card-title">Continental</h5>
                             <p class="card-text">Clásico | Variado | Abundante</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 20</p>
-                            <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 3, nombre: 'Desayuno Continental', precio: 20})"
+                            <div class="d-flex justify-content-center mt-3"> <button
+                                    onclick="agregarAlCarrito({id: 3, nombre: 'Desayuno Continental', precio: 20, categoria: 1})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Productos extra -->
                 <div class="col-12 col-md-6 col-lg-4 d-none extra-product" data-category="desayunos">
                     <div class="card shadow-sm h-100">
@@ -140,7 +140,8 @@
                             <p class="card-text">Jugo de naranja, café o infusión, huevos revueltos con jamón</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 7</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 4, nombre: 'Jugo de Papaya', precio: 7})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 4, nombre: 'Jugo de Papaya', precio: 7, categoria: 1})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -169,7 +170,7 @@
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
                                 <button
-                                    onclick="agregarAlCarrito({id: 5, nombre: 'Empanada Ají de Gallina', precio: 10})"
+                                    onclick="agregarAlCarrito({id: 5, nombre: 'Empanada Aji de Gallina', precio: 10, categoria: 2})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -185,7 +186,8 @@
                             <p class="card-text">Carne de res salteada, con cebolla a la juliana</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 12</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 6, nombre: 'Empanada Lomo Saltado', precio: 12})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 6, nombre: 'Empanada Lomo Saltado', precio: 12, categoria: 2})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -201,7 +203,8 @@
                             <p class="card-text">Pollo, tocino, champiñones, albahaca</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 12</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 7, nombre: 'Empanada La Toscana', precio: 12})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 7, nombre: 'Empanada La Toscana', precio: 12, categoria: 2})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -219,7 +222,8 @@
                             <p class="card-text">Jamón Pizza, queso tipo suizo y cebolla.</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 9</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 8, nombre: 'Empanada Jamón y Queso', precio: 9})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 8, nombre: 'Empanada Jamon y Queso', precio: 9, categoria: 2})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -235,7 +239,8 @@
                             <p class="card-text">Carne de res molida especial con salsa roja de la casa.</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 12</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 9, nombre: 'Empanada Boloñesa', precio: 12})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 9, nombre: 'Empanada Boloñesa', precio: 12, categoria: 2})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -251,7 +256,8 @@
                             <p class="card-text">Perfecta combinación de jamón, queso, tocino</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 13</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 10, nombre: 'Rollito Pizzero', precio: 20})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 10, nombre: 'Rollito Pizzero', precio: 20, categoria: 2})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -279,7 +285,8 @@
                             <p class="card-text">Espectacular mezcla de atún, en salsa especial de la casa</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 7</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 11, nombre: 'Sandwich Atún Paltoso', precio: 7})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 11, nombre: 'Sandwich Atun Paltoso', precio: 7, categoria: 3})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -296,7 +303,7 @@
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
                                 <button
-                                    onclick="agregarAlCarrito({id: 12, nombre: 'Sandwich Pollo extremo', precio: 10})"
+                                    onclick="agregarAlCarrito({id: 12, nombre: 'Sandwich Pollo Extremo', precio: 10, categoria: 3})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -312,7 +319,8 @@
                             <p class="card-text">Al horno desmechado en pan francés</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 13</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 13, nombre: 'Sandwich Pavo', precio: 7})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 13, nombre: 'Sandwich Pavo', precio: 13 , categoria: 3})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -331,7 +339,7 @@
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 15</p>
                             <div class="d-flex justify-content-center mt-3">
                                 <button
-                                    onclick="agregarAlCarrito({id: 14, nombre: 'Sandwich Asado de Res', precio: 15})"
+                                    onclick="agregarAlCarrito({id: 14, nombre: 'Sandwich Asado de Res', precio: 15, categoria: 3})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -348,7 +356,7 @@
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 15</p>
                             <div class="d-flex justify-content-center mt-3">
                                 <button
-                                    onclick="agregarAlCarrito({id: 15, nombre: 'Sandwich Chicharrón de Cerdo', precio: 15})"
+                                    onclick="agregarAlCarrito({id: 15, nombre: 'Sandwich Chicharron de Cerdo', precio: 15, categoria: 3})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -364,7 +372,8 @@
                             <p class="card-text">Grated de pollo, mayonesa, lechuga, apio y pecanas picadas.</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 16, nombre: 'Croissant de Pollo', precio: 10})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 16, nombre: 'Croissant de Pollo', precio: 10, categoria: 3})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -392,7 +401,8 @@
                             <p class="card-text">Papas fritas con hot dog, salchicha frankfuter y huevo frito</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 15</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 17, nombre: 'Salchipapa', precio: 15})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 17, nombre: 'Salchipapa', precio: 15, categoria: 4})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -408,7 +418,8 @@
                             <p class="card-text">Masa de papa rellena con carne molida, pasas, aceituna y huevo</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 12</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 18, nombre: 'Papa Rellena', precio: 12})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 18, nombre: 'Papa Rellena', precio: 12, categoria: 4})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -424,7 +435,8 @@
                             <p class="card-text">Con huevo y aceituna</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 9</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 19, nombre: 'Tamal de Pollo', precio: 9})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 19, nombre: 'Tamal de Pollo', precio: 9, categoria: 4})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -442,7 +454,8 @@
                             <p class="card-text">Choclo tierno con trocito de queso.</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 6</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 20, nombre: 'Humita Salada', precio: 6})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 20, nombre: 'Humita Salada', precio: 6, categoria: 4})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -458,7 +471,8 @@
                             <p class="card-text">De jamón y queso</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 20</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 21, nombre: 'Tequeños 10 und', precio: 20})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 21, nombre: 'Tequeños 10 und', precio: 20, categoria: 4})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -474,7 +488,8 @@
                             <p class="card-text">Filete de pollo, jamón, huevo, tocino, queso, lechuga y tomate</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 21</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 22, nombre: 'Club Sandwich', precio: 21})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 22, nombre: 'Club Sandwich', precio: 21, categoria: 4})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -503,7 +518,7 @@
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 14</p>
                             <div class="d-flex justify-content-center mt-3">
                                 <button
-                                    onclick="agregarAlCarrito({id: 23, nombre: 'Cheesecake de Arandano', precio: 14})"
+                                    onclick="agregarAlCarrito({id: 23, nombre: 'Cheesecake de Arandano', precio: 14, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -519,7 +534,8 @@
                             <p class="card-text">Delicioso y refrescante postre</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 14</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 24, nombre: 'Pie de Maracuyá', precio: 14})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 24, nombre: 'Pie de Maracuyá', precio: 14, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -535,7 +551,8 @@
                             <p class="card-text">Dulce y cremoso</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 12</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 25, nombre: 'Pie de Fresa', precio: 12})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 25, nombre: 'Pie de Fresa', precio: 12, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -554,7 +571,7 @@
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 11</p>
                             <div class="d-flex justify-content-center mt-3">
                                 <button
-                                    onclick="agregarAlCarrito({id: 26, nombre: 'Enrollado de Chocolate', precio: 11})"
+                                    onclick="agregarAlCarrito({id: 26, nombre: 'Enrollado de Chocolate', precio: 11, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -570,7 +587,8 @@
                             <p class="card-text">Clásico postre peruano</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 27, nombre: 'Torta Tres Leches', precio: 10})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 27, nombre: 'Torta Tres Leches', precio: 10, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -586,7 +604,7 @@
                             <p class="card-text">Dulce tradicional</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 8</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 28, nombre: 'Pionono', precio: 8})"
+                                <button onclick="agregarAlCarrito({id: 28, nombre: 'Pionono', precio: 8, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -602,7 +620,8 @@
                             <p class="card-text">Postre tradicional peruano</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 8</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 28, nombre: 'Mazamorra Morada', precio: 8})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 28, nombre: 'Mazamorra Morada', precio: 8, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -618,7 +637,8 @@
                             <p class="card-text">Sabor dulce de tu galleta favorita</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 29, nombre: 'Marquesa de Oreo', precio: 10})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 29, nombre: 'Marquesa de Oreo', precio: 10, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -634,7 +654,8 @@
                             <p class="card-text">Toque agridulce a tu postre</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 30, nombre: 'Marquesa de Maracuyá', precio: 10})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 30, nombre: 'Marquesa de Maracuyá', precio: 10, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -650,7 +671,8 @@
                             <p class="card-text">Dulce natural roja</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 31, nombre: 'Marquesa de Fresa', precio: 10})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 31, nombre: 'Marquesa de Fresa', precio: 10, categoria: 5})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -678,7 +700,8 @@
                             <p class="card-text">Café con chocolate</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 10</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 32, nombre: 'Café con Chocolate', precio: 10})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 32, nombre: 'Café con Chocolate', precio: 10, categoria: 6})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -694,7 +717,8 @@
                             <p class="card-text">Café concentrado</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 12</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 33, nombre: 'Café concentrado', precio: 12})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 33, nombre: 'Café concentrado', precio: 12, categoria: 6})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -710,7 +734,8 @@
                             <p class="card-text">Variedad de sabores</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 5</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 34, nombre: 'Infusiones', precio: 5})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 34, nombre: 'Infusiones', precio: 5, categoria: 6})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -728,7 +753,8 @@
                             <p class="card-text">Café con leche condensada</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 14</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 35, nombre: 'Café bombón', precio: 14})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 35, nombre: 'Café bombón', precio: 14, categoria: 6})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -744,7 +770,8 @@
                             <p class="card-text">Chocolate caliente tradicional</p>
                             <p class="fw-bold text-marron fs-5 mb-2">S/ 8</p>
                             <div class="d-flex justify-content-center mt-3">
-                                <button onclick="agregarAlCarrito({id: 36, nombre: 'Chocolate solo', precio: 8})"
+                                <button
+                                    onclick="agregarAlCarrito({id: 36, nombre: 'Chocolate solo', precio: 8, categoria: 6})"
                                     class="btn btn-marron comprar-btn"
                                     (click)="comprar('Tertulia Especial')">Comprar</button>
                             </div>
@@ -813,7 +840,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script th:src="@{/js/script.js}"></script>
 

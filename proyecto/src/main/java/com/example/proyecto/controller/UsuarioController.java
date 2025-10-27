@@ -44,7 +44,7 @@ public class UsuarioController {
     @GetMapping("/nuevo")
     public String mostrarFormularioNuevo(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "usuario_form"; // usuario_form.html
+        return "usuario_form"; 
     }
 
     // ✅ Guardar el usuario (nuevo o editado)

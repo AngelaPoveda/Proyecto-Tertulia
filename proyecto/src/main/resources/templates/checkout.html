@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +39,6 @@
         </div>
     </nav>
 
-
     <!-- Contenedor principal -->
     <section class="checkout-container">
         <h2 class="text-center mb-4">Finalizar compra 🛍️</h2>
@@ -65,7 +62,20 @@
                 <input type="text" id="direccion" class="form-control" placeholder="Av. España 450 - Trujillo" required>
                 <div class="invalid-feedback">Por favor ingresa tu dirección.</div>
             </div>
+            <div class="mb-3">
+                <label for="fechaEntrega" class="form-label">Fecha de entrega</label>
+                <input type="date" id="fechaEntrega" class="form-control" required min="">
+                <!-- El min se establecerá con JavaScript -->
+                <div class="invalid-feedback">Selecciona una fecha válida.</div>
+            </div>
 
+            <div class="mb-3">
+                <label for="horaEntrega" class="form-label">Hora de entrega</label>
+                <input type="time" id="horaEntrega" class="form-control" required min="09:00" max="20:00">
+                <!-- step="900" permite intervalos de 15 minutos -->
+                <div class="invalid-feedback">Selecciona una hora entre las 9:00 y las 20:00.</div>
+                <small class="text-muted">Horario de atención: 9:00 AM - 8:00 PM</small>
+            </div>
             <div class="mb-4">
                 <label for="pago" class="form-label">Método de pago</label>
                 <select id="pago" class="form-select" required>
@@ -79,10 +89,6 @@
             <button type="submit" class="btn btn-marron w-100 py-2">Confirmar pedido</button>
         </form>
 
-        <div class="mapa mt-4">
-            <iframe src="https://www.google.com/maps?q=Trujillo,Perú&output=embed" allowfullscreen="" loading="lazy">
-            </iframe>
-        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

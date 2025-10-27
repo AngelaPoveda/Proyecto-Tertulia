@@ -621,3 +621,12 @@ footer h5 {
     border: 0;
 }
 .btn-marron:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.swal2-confirm {
+    background-color: var(--color-marron) !important;
+    border-color: var(--color-marron) !important;
+}
+
+.swal2-confirm:hover {
+    background-color: var(--color-oscuro) !important;
+    border-color: var(--color-oscuro) !important;
+}
