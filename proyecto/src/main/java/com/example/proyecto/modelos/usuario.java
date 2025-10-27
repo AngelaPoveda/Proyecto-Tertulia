@@ -2,6 +2,10 @@ package com.example.proyecto.modelos;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,14 +18,24 @@ public class Usuario{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El nombre de usuario es obligatorio")
     private String nombre;
 
-    @Column(name = "nombre_usuario")
-    private String nombreUsuario;
-    
-    private String correo;
-    private String contrasena; // mejor evitar la ñ en nombres de variables
+    @NotBlank(message = "El teléfono es obligatorio")
+    @Pattern(regexp = "^[0-9]{9}$", message = "El teléfono debe tener 9 dígitos")
     private String telefono;
+
+    @Email(message = "El correo debe tener un formato válido")
+    @NotBlank(message = "El correo es obligatorio")
+    private String correo;
+
+    @NotBlank(message = "La contraseña no puede estar vacía")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
+    private String contrasena;
+    
+    @Column(name = "nombre_usuario", unique = true)
+    private String nombreUsuario;
+
 
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;

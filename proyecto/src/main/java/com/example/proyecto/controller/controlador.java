@@ -49,6 +49,11 @@ public class controlador {
         model.addAttribute("titulo", "Carrito | Tertulia Cafetería");
         return "carrito";
     }
+    @GetMapping("/registro")
+    public String registro(Model model) {
+        model.addAttribute("titulo", "Registro | Tertulia Cafetería");
+        return "registro";
+    }
     @PostMapping("/contacto/enviar")
     public String enviarContacto(
             @RequestParam String nombre,

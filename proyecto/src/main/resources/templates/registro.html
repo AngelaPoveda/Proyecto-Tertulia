@@ -25,32 +25,50 @@
                 Crea tu cuenta en <span style="color: var(--color-marron-oscuro);">Tertulia</span>
             </h2>
 
-            <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post">
+            <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post" class="p-3">
+
+                <!-- NOMBRE COMPLETO -->
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre completo</label>
-                    <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ejemplo: Ana Torres"
-                        required>
+                    <input type="text" id="nombre" th:field="*{nombre}" class="form-control"
+                        placeholder="Ejemplo: Ana Torres"
+                        th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''" required>
+                    <div class="invalid-feedback" th:errors="*{nombre}"></div>
                 </div>
+
+                <!-- NOMBRE DE USUARIO -->
                 <div class="mb-3">
                     <label for="usuario" class="form-label">Nombre de usuario</label>
-                    <input type="text" th:field="*{nombreUsuario}" class="form-control" placeholder="Tu usuario"
-                        required>
+                    <input type="text" th:field="*{nombreUsuario}" class="form-control"
+                        th:classappend="${#fields.hasErrors('nombreUsuario')} ? 'is-invalid'">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nombreUsuario')}"
+                        th:errors="*{nombreUsuario}"></div>
                 </div>
+
+                <!-- CORREO ELECTRÓNICO -->
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo electrónico</label>
-                    <input type="email" th:field="*{correo}" class="form-control" placeholder="tucorreo@gmail.com"
-                        required>
+                    <input type="email" id="correo" th:field="*{correo}" class="form-control"
+                        placeholder="tucorreo@gmail.com"
+                        th:classappend="${#fields.hasErrors('correo')} ? 'is-invalid' : ''" required>
+                    <div class="invalid-feedback" th:errors="*{correo}"></div>
                 </div>
 
+                <!-- CONTRASEÑA -->
                 <div class="mb-3">
                     <label for="contrasena" class="form-label">Contraseña</label>
-                    <input type="password" th:field="*{contrasena}" class="form-control" placeholder="********"
+                    <input type="password" id="contrasena" th:field="*{contrasena}" class="form-control"
+                        placeholder="********" th:classappend="${#fields.hasErrors('contrasena')} ? 'is-invalid' : ''"
                         required>
+                    <div class="invalid-feedback" th:errors="*{contrasena}"></div>
                 </div>
 
+                <!-- TELÉFONO -->
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="text" th:field="*{telefono}" class="form-control" placeholder="999999999">
+                    <input type="text" id="telefono" th:field="*{telefono}" class="form-control" placeholder="999999999"
+                        th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''">
+                    <div class="invalid-feedback" th:errors="*{telefono}"></div>
                 </div>
 
                 <button type="submit" class="btn btn-marron w-100 py-2 mt-3">Registrarme</button>
@@ -59,7 +77,9 @@
                     ¿Ya tienes cuenta?
                     <a th:href="@{/login}" class="link-marron">Inicia sesión</a>
                 </p>
+
             </form>
+
 
         </div>
     </section>
