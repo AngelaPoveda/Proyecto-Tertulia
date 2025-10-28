@@ -48,11 +48,6 @@ public class Pedido {
     @Positive(message = "El total debe ser mayor que 0")
     private double total;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    @NotNull(message = "Debe estar asociado a un usuario")
-    private Usuario usuario;
-
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     @Size(min = 1, message = "Debe haber al menos un detalle de pedido")
     private List<DetallePedido> detalles;

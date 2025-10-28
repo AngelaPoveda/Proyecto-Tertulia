@@ -1,5 +1,4 @@
 package com.example.proyecto.modelos;
-import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -35,9 +34,5 @@ public class Usuario{
     
     @Column(name = "nombre_usuario", unique = true)
     private String nombreUsuario;
-
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Pedido> pedidos;
 
 }
