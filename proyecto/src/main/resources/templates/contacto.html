@@ -16,60 +16,63 @@
     <header>
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-dark py-3 fixed-top" style="background-color: var(--color-marron);">
-    <div class="container">
-        <!-- LOGO -->
-        <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
+            <div class="container">
+                <!-- LOGO -->
+                <a class="navbar-brand fw-bold" th:href="@{/}">Tertulia Cafetería</a>
 
-        <!-- BOTÓN RESPONSIVE -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                <!-- BOTÓN RESPONSIVE -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <!-- MENÚ -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
-                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/carta}">Menú</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/somos}">Quiénes somos</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
+                <!-- MENÚ -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center fw-bold">
+                        <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/carta}">Menú</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/somos}">Quiénes somos</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
 
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/carrito}">
-                        <i class="bi bi-cart fs-5"></i>
-                    </a>
-                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/carrito}">
+                                <i class="bi bi-cart fs-5"></i>
+                            </a>
+                        </li>
 
-                <!-- 🔹 Si HAY sesión -->
-                <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle fs-5 me-2"></i>
-                        <span id="nombreUsuario">Usuario</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                        <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+                        <!-- 🔹 Si HAY sesión -->
+                        <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle fs-5 me-2"></i>
+                                <span id="nombreUsuario">Usuario</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- 🔹 Si NO hay sesión -->
+                        <li class="nav-item ms-3" id="loginNav">
+                            <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                        </li>
                     </ul>
-                </li>
-
-                <!-- 🔹 Si NO hay sesión -->
-                <li class="nav-item ms-3" id="loginNav">
-                    <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
-        <section class="contacto-banner d-flex align-items-center justify-content-center text-center text-white mb-5 position-relative">
-    <img th:src="@{/img/carrusel1.jpg}" class="img-fluid w-100 h-100 position-absolute top-0 start-0 object-fit-cover rounded-3 shadow img-hover" alt="Cafetería">
-    <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
-    <div class="position-relative z-2">
-        <h1 class="fw-bold display-5">Contáctanos</h1>
-        <p class="lead">Queremos escucharte y endulzar tu día</p>
-    </div>
-</section>
+        <section
+            class="contacto-banner d-flex align-items-center justify-content-center text-center text-white mb-5 position-relative">
+            <img th:src="@{/img/carrusel1.jpg}"
+                class="img-fluid w-100 h-100 position-absolute top-0 start-0 object-fit-cover rounded-3 shadow img-hover"
+                alt="Cafetería">
+            <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+            <div class="position-relative z-2">
+                <h1 class="fw-bold display-5">Contáctanos</h1>
+                <p class="lead">Queremos escucharte y endulzar tu día</p>
+            </div>
+        </section>
 
         <div class="container my-5">
             <!-- Mensaje de éxito -->
@@ -89,120 +92,117 @@
                         <p><i class="bi bi-envelope-fill"></i> tertulia_cafeteria2010@gmail.com</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h2 class="mb-4">Formulario de Contacto</h2>
 
-                    <form th:action="@{/contacto/enviar}" method="post" class="needs-validation" novalidate>
-                        <!-- Nombre -->
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                            <div class="invalid-feedback">Por favor, ingrese su nombre.</div>
-                        </div>
+                <form id="contactoForm" class="col-md-6" th:object="${contacto}" novalidate>
+                    <!-- Nombre -->
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                        <div class="invalid-feedback">Por favor, ingresa tu nombre completo.</div>
+                    </div>
 
-                        <!-- Apellido -->
-                        <div class="mb-3">
-                            <label for="apellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" name="apellido" required>
-                            <div class="invalid-feedback">Por favor, ingrese su apellido.</div>
-                        </div>
+                    <!-- Apellido -->
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
+                        <div class="invalid-feedback">Por favor, ingresa tu apellido.</div>
+                    </div>
 
-                        <!-- Correo -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                            <div class="invalid-feedback">Ingrese un correo válido.</div>
-                        </div>
+                    <!-- Correo -->
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="correo" th:field="*{correo}" required>
+                        <div class="invalid-feedback">Por favor, ingresa un correo válido.</div>
+                    </div>
 
-                        <!-- Teléfono -->
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="telefono" name="telefono" pattern="[0-9]{9,}"
-                                required>
-                            <div class="invalid-feedback">Ingrese un número de teléfono válido (mínimo 9 dígitos).</div>
-                        </div>
+                    <!-- Teléfono -->
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefono" th:field="*{telefono}" pattern="[0-9]{9}"
+                            required>
+                        <div class="invalid-feedback">Ingresa un número de 9 dígitos.</div>
+                    </div>
 
-                        <!-- Mensaje -->
-                        <div class="mb-3">
-                            <label for="mensaje" class="form-label">Mensaje</label>
-                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
-                            <div class="invalid-feedback">Por favor, ingrese un mensaje.</div>
-                        </div>
+                    <!-- Mensaje -->
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" th:field="*{mensaje}" rows="4" required></textarea>
+                        <div class="invalid-feedback">Por favor, ingresa un mensaje.</div>
+                    </div>
 
-                        <!-- Botón -->
-                        <button class="btn w-100" type="submit"
-                            style="background-color: var(--color-marron); color: white">
-                            Enviar
-                        </button>
-                    </form>
+                    <button type="submit" class="btn w-100" style="background-color: var(--color-marron); color: white">
+                        Enviar
+                    </button>
+                </form>
 
+
+                <!-- Horarios de atención -->
+                <div class="container my-5">
+                    <h3 class="fw-bold text-center mb-4">⏰ Horarios de Atención</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle text-center shadow">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Día</th>
+                                    <th>Horario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lunes - Viernes</td>
+                                    <td>9:00 AM - 8:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Sábado</td>
+                                    <td>10:00 AM - 6:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Domingo</td>
+                                    <td>Cerrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Horarios de atención -->
-            <div class="container my-5">
-                <h3 class="fw-bold text-center mb-4">⏰ Horarios de Atención</h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover align-middle text-center shadow">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Día</th>
-                                <th>Horario</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Lunes - Viernes</td>
-                                <td>9:00 AM - 8:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td>Sábado</td>
-                                <td>10:00 AM - 6:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td>Domingo</td>
-                                <td>Cerrado</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
 
-            <!-- Testimonios -->
-            <div class="mb-5">
-                <h3 class="text-center mb-4">💬 Testimonios de Clientes</h3>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <p class="card-text">“Los pasteles son una delicia, frescos y con un sabor increíble.
-                                    Siempre compro aquí.”</p>
-                                <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - María G.</h6>
+                <!-- Testimonios -->
+                <div class="mb-5">
+                    <h3 class="text-center mb-4">💬 Testimonios de Clientes</h3>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <p class="card-text">“Los pasteles son una delicia, frescos y con un sabor
+                                        increíble.
+                                        Siempre compro aquí.”</p>
+                                    <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - María G.</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <p class="card-text">“El servicio es excelente, atienden rápido y hasta personalizan las
-                                    tortas.”</p>
-                                <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - Juan P.</h6>
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <p class="card-text">“El servicio es excelente, atienden rápido y hasta
+                                        personalizan las
+                                        tortas.”</p>
+                                    <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - Juan P.</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-body">
-                                <p class="card-text">“La mejor pastelería de la ciudad. Los recomiendo al 100%.”</p>
-                                <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - Carla R.</h6>
+                        <div class="col-md-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <p class="card-text">“La mejor pastelería de la ciudad. Los recomiendo al 100%.”
+                                    </p>
+                                    <h6 class="fw-bold">⭐ ⭐ ⭐ ⭐ ⭐ - Carla R.</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </div>
     </main>
 
@@ -262,15 +262,17 @@
         </div>
     </footer>
 
-    
+
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content simple-success-modal p-3">
                 <div class="modal-body text-center">
                     <div class="icon-circle mb-3 mx-auto">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-opacity="0.12" stroke-width="2"/>
-                            <path d="M7 13l3 3 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-opacity="0.12"
+                                stroke-width="2" />
+                            <path d="M7 13l3 3 7-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </div>
 
@@ -278,7 +280,8 @@
                     <p id="successModalMessage" class="mb-3 small text-muted">Formulario enviado correctamente ✅</p>
 
                     <div class="d-flex justify-content-center gap-2">
-                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                            data-bs-dismiss="modal">Cerrar</button>
                         <a th:href="@{/}" class="btn btn-marron btn-sm">Ir al inicio</a>
                     </div>
                 </div>
@@ -289,8 +292,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script th:src="@{/js/contacto.js}"></script>
     <script th:src="@{/js/script.js}"></script>
+
+
 </body>
 
 </html>

@@ -1,35 +1,48 @@
-// ...existing code...
-(() => {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            } else {
-                event.preventDefault(); 
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contactoForm");
 
-                const fd = new FormData(form);
-                const tipo = fd.get('tipoSolicitud') || '';
-                let mensaje = "Formulario enviado correctamente ✅";
-                if (tipo === 'pedido') mensaje = "¡Pedido recibido! Nos pondremos en contacto contigo pronto.";
-                if (tipo === 'cotizacion') mensaje = "¡Solicitud de cotización enviada! Pronto recibirás la cotización.";
-                if (tipo === 'consulta') mensaje = "¡Consulta enviada! Te responderemos lo antes posible.";
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-                const modalMsg = document.getElementById('successModalMessage');
-                if (modalMsg) modalMsg.textContent = mensaje;
+        if (!form.checkValidity()) {
+            form.classList.add("was-validated");
+            return;
+        }
 
-                // Mostrar modal de Bootstrap
-                const modalEl = document.getElementById('successModal');
-                if (modalEl) {
-                    const modal = new bootstrap.Modal(modalEl);
-                    modal.show();
-                } else {
-                    alert(mensaje);
-                }
-            }
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
+        const data = {
+            nombre: document.getElementById("nombre").value,
+            apellido: document.getElementById("apellido").value,
+            correo: document.getElementById("correo").value,
+            telefono: document.getElementById("telefono").value,
+            mensaje: document.getElementById("mensaje").value
+        };
+
+        fetch("/contacto/enviar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            Swal.fire({
+                icon: "success",
+                title: "¡Gracias por contactarnos!",
+                text: result.mensaje,
+                confirmButtonColor: "#795548"
+            });
+            form.reset();
+            form.classList.remove("was-validated");
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "No se pudo enviar el formulario. Intenta nuevamente.",
+                confirmButtonColor: "#d33"
+            });
+        });
+    });
+});

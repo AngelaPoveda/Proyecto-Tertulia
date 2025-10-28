@@ -3,8 +3,8 @@ package com.example.proyecto.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.proyecto.modelos.Contacto;
 
 
 @Controller
@@ -30,6 +30,7 @@ public class controlador {
     @GetMapping("/contacto")
     public String contacto(Model model) {
         model.addAttribute("titulo", "Contacto | Tertulia Cafetería");
+        model.addAttribute("contacto", new Contacto());
         return "contacto";
     }
 
@@ -53,26 +54,5 @@ public class controlador {
     public String registro(Model model) {
         model.addAttribute("titulo", "Registro | Tertulia Cafetería");
         return "registro";
-    }
-    @PostMapping("/contacto/enviar")
-    public String enviarContacto(
-            @RequestParam String nombre,
-            @RequestParam String apellido,
-            @RequestParam String email,
-            @RequestParam String telefono,
-            @RequestParam String mensaje,
-            Model model) {
-        
-        // Aquí puedes procesar el formulario (guardar en BD, enviar email, etc.)
-        System.out.println("Formulario recibido:");
-        System.out.println("Nombre: " + nombre + " " + apellido);
-        System.out.println("Email: " + email);
-        System.out.println("Teléfono: " + telefono);
-        System.out.println("Mensaje: " + mensaje);
-        
-        model.addAttribute("success", true);
-        model.addAttribute("mensajeExito", "¡Gracias por contactarnos! Te responderemos pronto.");
-        
-        return "contacto";
     }
 }
