@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             detalles: carrito.map(item => ({
                 producto: { id: item.id }, // ✅ importante: referenciar solo el id del producto
                 cantidad: item.cantidad,
+                precioUnitario: item.precio,
                 subtotal: item.precio * item.cantidad
             }))
         };

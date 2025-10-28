@@ -14,7 +14,10 @@ public class DetallePedido {
     private Long id;
 
     private Integer cantidad;
+
+    @Column(name = "precio_unitario")
     private Double precioUnitario;
+
     private Double subtotal;
 
     @ManyToOne
