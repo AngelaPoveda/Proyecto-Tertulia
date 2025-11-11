@@ -51,4 +51,9 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     @Size(min = 1, message = "Debe haber al menos un detalle de pedido")
     private List<DetallePedido> detalles;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
 }

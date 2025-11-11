@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.proyecto.modelos.Usuario;
 import com.example.proyecto.repositorio.UsuarioRepositorio;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import jakarta.validation.Valid;
 
@@ -18,10 +19,12 @@ import org.springframework.validation.BindingResult;
 @RequestMapping("/usuarios")
 public class UsuarioController {
     private final UsuarioRepositorio usuarioRepository;
+private final PasswordEncoder passwordEncoder;
 
-    public UsuarioController(UsuarioRepositorio usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
+public UsuarioController(UsuarioRepositorio usuarioRepository, PasswordEncoder passwordEncoder) {
+    this.usuarioRepository = usuarioRepository;
+    this.passwordEncoder = passwordEncoder;
+}
 
     // ✅ Listar todos los usuarios
     @GetMapping
@@ -54,6 +57,9 @@ public String registrarUsuario(
         model.addAttribute("titulo", "Registro | Tertulia Cafetería");
         return "registro";
     }
+
+    // 🔐 Encriptar la contraseña antes de guardar
+    usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
 
     usuarioRepository.save(usuario);
     return "redirect:/login?success";

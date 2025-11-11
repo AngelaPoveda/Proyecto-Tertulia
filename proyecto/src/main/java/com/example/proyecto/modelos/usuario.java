@@ -35,4 +35,6 @@ public class Usuario{
     @Column(name = "nombre_usuario", unique = true)
     private String nombreUsuario;
 
+    @NotBlank(message = "El rol es obligatorio")
+    private String rol = "USER"; // valor por defecto
 }

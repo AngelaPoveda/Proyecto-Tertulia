@@ -116,40 +116,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render inicial
   renderCarrito();
 
-  // ---- Finalizar compra ----
-  if (finalizarBtn) {
-    finalizarBtn.addEventListener('click', () => {
-      const usuario = localStorage.getItem('usuario');
+if (finalizarBtn) {
+  finalizarBtn.addEventListener('click', () => {
+    if (carrito.length === 0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Carrito vacío',
+        text: 'Agrega productos antes de finalizar tu compra.',
+        confirmButtonColor: '#6B4F28'
+      });
+      return;
+    }
 
-      // ⚠️ Si el carrito está vacío
-      if (carrito.length === 0) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Carrito vacío',
-          text: 'Agrega productos antes de finalizar tu compra.',
-          confirmButtonColor: '#6B4F28'
-        });
-        return;
-      }
+    // ⚠️ Si el usuario NO ha iniciado sesión (según el backend)
+    if (!isAuthenticated) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Inicia sesión',
+        text: 'Debes iniciar sesión para finalizar tu compra.',
+        confirmButtonText: 'Ir a iniciar sesión',
+        confirmButtonColor: '#6B4F28'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = '/login';
+        }
+      });
+      return;
+    }
 
-      // ⚠️ Si no hay sesión
-      if (!usuario) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Inicia sesión',
-          text: 'Debes iniciar sesión para finalizar tu compra.',
-          confirmButtonText: 'Ir a iniciar sesión',
-          confirmButtonColor: '#6B4F28'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href = '/login';
-          }
-        });
-        return;
-      }
-
-      // ✅ Si hay sesión y carrito con productos → ir al checkout
-      window.location.href = '/checkout';
+    // ✅ Si hay sesión → ir al checkout
+    window.location.href = '/checkout';
     });
   }
 });
+
+

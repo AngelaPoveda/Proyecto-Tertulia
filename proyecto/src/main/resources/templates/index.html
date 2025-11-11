@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8">
@@ -44,19 +44,24 @@
                 </li>
 
                 <!-- 🔹 Si HAY sesión -->
-                <li class="nav-item dropdown ms-3" id="usuarioDropdown" style="display: none;">
+                <li class="nav-item dropdown ms-3" 
+                    sec:authorize="isAuthenticated()">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-circle fs-5 me-2"></i>
-                        <span id="nombreUsuario">Usuario</span>
+                        <span th:text="${#authentication.name}">Usuario</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                        <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <button class="dropdown-item" type="submit">Cerrar sesión</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
 
                 <!-- 🔹 Si NO hay sesión -->
-                <li class="nav-item ms-3" id="loginNav">
+                <li class="nav-item ms-3" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
                 </li>
             </ul>

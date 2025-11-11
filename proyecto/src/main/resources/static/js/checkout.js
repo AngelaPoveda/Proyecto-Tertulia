@@ -11,21 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Simulación de sesión (revisa si hay usuario)
-        const usuario = localStorage.getItem('usuario');
-        
-        if (!usuario) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Inicia sesión',
-                text: 'Debes iniciar sesión antes de realizar tu pedido.',
-                confirmButtonText: 'Ir a iniciar sesión',
-                confirmButtonColor: '#6B4F28'
-            }).then(() => {
-                window.location.href = '/login.html';
-            });
-            return;
-        }
         // Obtener datos del formulario
         const nombre = document.getElementById('nombre').value;
         const telefono = document.getElementById('telefono').value;
@@ -73,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/pedidos/guardar', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
                 body: JSON.stringify(pedido)
             });
 
