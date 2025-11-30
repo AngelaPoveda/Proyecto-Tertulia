@@ -59,6 +59,14 @@
             confirmButtonColor: '#6B4F28'
         });
     </script>
+    <script th:if="${param.error}">
+    Swal.fire({
+        icon: 'error',
+        title: 'Credenciales incorrectas',
+        text: 'Usuario o contraseña inválidos. Inténtalo nuevamente.',
+        confirmButtonColor: '#6B4F28'
+    });
+</script>
 </body>
 
 </html>
