@@ -25,7 +25,7 @@
                 Crea tu cuenta en <span style="color: var(--color-marron-oscuro);">Tertulia</span>
             </h2>
 
-            <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post" class="p-3">
+            <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post" class="p-3 needs-validation" novalidate>
 
                 <!-- NOMBRE COMPLETO -->
                 <div class="mb-3">
