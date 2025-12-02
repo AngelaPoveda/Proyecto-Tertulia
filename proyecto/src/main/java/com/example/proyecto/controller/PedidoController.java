@@ -24,7 +24,7 @@ public class PedidoController {
     public Pedido guardarPedido(@RequestBody Pedido pedido,
                                 @AuthenticationPrincipal UserDetails userDetails) {
 
-        // ⚠️ Si no hay usuario autenticado, no permitir guardar
+        // Si no hay usuario autenticado, no permitir guardar
         if (userDetails == null) {
             throw new RuntimeException("Usuario no autenticado");
         }
