@@ -38,7 +38,7 @@ public class SecurityConfig {
         .userDetailsService(usuarioServicio) 
             .authorizeHttpRequests(auth -> auth
                 // ✅ Todas estas rutas serán PÚBLICAS
-                .requestMatchers("/", "/carta", "/somos", "/contacto", "/login", "/registro", "/carrito", "/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/", "/carta", "/somos", "/contacto", "/login", "/registro", "/carrito", "/css/**", "/js/**", "/images/**", "/pdf/**").permitAll()
                 // 🔒 Solo usuarios autenticados pueden acceder a /checkout
                 .requestMatchers("/checkout/**", "/pedidos/**").authenticated()
                 // cualquier otra ruta requiere autenticación
